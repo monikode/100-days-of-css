@@ -9,12 +9,12 @@ const app = Vue.createApp({
   methods: {
     changeDay() {
       fetch(`day-${this.day}/index.html`)
-        .then(async function (response) {
+        .then(  (response) =>{
           if (!response.ok) throw Error;
+          else this.isDayNull = false;
           return response.text();
         })
         .then((html) => {
-          this.isDayNull = false;
           document.getElementById("frame").innerHTML = html;
           document.head.getElementsByTagName(
             "link"
