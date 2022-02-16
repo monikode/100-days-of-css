@@ -9,7 +9,7 @@ const app = Vue.createApp({
     day() {
       document.head.getElementsByTagName(
         "link"
-      )[0].href = `/day-${this.day}/style.css`;
+      )[0].href = `day-${this.day}/style.css`;
 
       fetch(`day-${this.day}/index.html`)
         .then(function (response) {
