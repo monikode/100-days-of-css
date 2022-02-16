@@ -1,0 +1,167 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+
+.frame {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: 400px;
+	margin-top: -200px;
+	margin-left: -200px;
+	border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, #eebe6c 0%, #ca7c4e 100%);
+	color: #786450;
+	font-family: "Open Sans", Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.center {
+	background-color: #fff;
+	width: 300px;
+	height: 300px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	display: flex;
+}
+
+.left {
+	width: 60%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding: 35px 10px;
+}
+
+.top {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+}
+
+.top :nth-child(1) {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 1px solid #786450;
+	border-radius: 100%;
+	clip-path: polygon(0 0%, 80% 0, 80% 100%, 0 100%);
+	transition: all 1s;
+	transform: rotate(0deg);
+}
+.top:hover :nth-child(1) {
+	transform: rotate(-360deg);
+}
+.top :nth-child(2) {
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	box-sizing: border-box;
+	border: 1px solid #786450;
+	border-radius: 100%;
+	clip-path: polygon(20% 0%, 100% 0, 100% 100%, 20% 100%);
+	transition: all 1s;
+	transform: rotate(0deg);
+}
+
+.top:hover :nth-child(2) {
+	transform: rotate(360deg);
+}
+
+.top :nth-child(3) {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	height: 80%;
+	border-radius: 100%;
+	background: url(http://100dayscss.com/codepen/jessica-potter.jpg);
+	background-size: cover;
+}
+
+.infos > * {
+	line-height: 1;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	color:  #786450;
+}
+
+.infos h2 {
+	font-weight: 600;
+	font-size: 15px;
+	
+	padding-bottom: 5px;
+}
+
+.infos h6 {
+	font-weight: normal;
+	font-size: 10px;
+	padding-bottom: 20px;
+}
+
+.bottom {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 65%;
+	margin: 0 auto;
+}
+button {
+	background: none;
+	border: 1px solid #786450;
+	border-radius: 15px;
+	padding: 8px 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #786450;
+	transition: all 0.5s;
+}
+button:hover {
+	color: #fff;
+	background-color: #786450;
+}
+
+.right {
+	width: 40%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
+
+.right div {
+	flex: 1;
+	background-color: #f5e8df;
+	display: flex;
+	justify-content: center;
+
+	align-items: center;
+	text-align: center;
+	flex-direction: column;
+	cursor: pointer;
+	transition: all 0.5s;
+	font-size: 11px;
+}
+
+.right div:hover {
+	background-color: #e1cfc2;
+}
+
+.right div span {
+	display: block;
+	font-size: 18px;
+		font-weight: 600;
+}
