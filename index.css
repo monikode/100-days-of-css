@@ -7,9 +7,12 @@
   height: 400px;
   justify-content: space-around;
 }
-#frame {
+#frame, .not-found{
   width: 400px;
   height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .frame {
   position: relative;
