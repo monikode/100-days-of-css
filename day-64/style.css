@@ -26,7 +26,7 @@
   transform: translate(-50%,-50%);
 }
 
-button {
+.frame button {
 	box-shadow: 15px 15px #8d44ac;
 	height: 80px;
 	width: 220px;
@@ -41,7 +41,7 @@ button {
 	letter-spacing: 4px;
 }
 
-button:hover {
+.frame button:hover {
 	box-shadow: -15px -15px  #fff;
 	margin-top: 15px;
 	margin-right: -15px;
