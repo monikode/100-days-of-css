@@ -10,7 +10,7 @@ const app = Vue.createApp({
     changeDay() {
       fetch(`day-${this.day}/index.html`)
         .then(async function (response) {
-          if (!response.ok) throw Error
+          if (!response.ok) throw Error;
           return response.text();
         })
         .then((html) => {
@@ -25,14 +25,14 @@ const app = Vue.createApp({
           newScript.src = `day-${this.day}/index.js`;
           document.body.appendChild(newScript);
         })
-        .catch( (err) =>{
+        .catch((err) => {
           console.log("Failed to fetch page: ", err);
           this.isDayNull = true;
-          console.log(this.isDayNull)
+          console.log(this.isDayNull);
         });
     },
     nextDay() {
-      this.day += 1;
+      if (this.day < 100) this.day += 1;
     },
     previousDay() {
       if (this.day > 1) {
