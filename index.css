@@ -1,1 +1,15 @@
-body {color: red}
+.main-container {
+  display: flex;
+  height: 400px;
+  justify-content: space-around;
+}
+#frame {
+  width: 400px;
+  height: 400px;
+}
+.frame {
+  position: relative;
+  margin: 0;
+  left: 0;
+  top: 0;
+}
