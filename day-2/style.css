@@ -1,0 +1,114 @@
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background: #3faf82;
+  color: #333;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.burguer span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-color: #fff;
+  top: calc(50% - 5px);
+  border-radius: 4px;
+  animation: none;
+  box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.3);
+}
+.move span {
+  animation-fill-mode: fowards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.pause span {
+  animation-play-state: paused !important;
+}
+
+.move span:nth-child(1) {
+  animation-name: line-3;
+}
+
+.move span:nth-child(2) {
+  animation-name: line-2;
+}
+
+.move span:nth-child(3) {
+  animation-name: line-1;
+}
+
+.burguer span:nth-child(1) {
+  margin-top: 25px;
+}
+.burguer span:nth-child(3) {
+  margin-top: -25px;
+}
+
+@keyframes line-1 {
+  0% {
+    margin-top: 25px;
+  }
+
+  50% {
+    margin-top: 0;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    margin-top: 0;
+    transform: rotate(-45deg);
+  }
+}
+
+@keyframes line-2 {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes line-3 {
+  0% {
+    margin-top: -25px;
+  }
+
+  50% {
+    margin-top: 0;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    margin-top: 0;
+    transform: rotate(-135deg);
+  }
+}

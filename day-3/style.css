@@ -1,0 +1,184 @@
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	overflow: hidden;
+  background: #272c34;
+  color: #333;
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.center {
+  position: relative;
+	width: 160px;
+	height: 160px;
+	border-radius: 100%;
+	overflow: hidden;
+	background-color: #7ddffc;
+	animation: center 4s infinite;
+}
+
+.sun {
+	position: absolute;
+	top: 65%;
+	left: -30px;
+	width: calc(100% + 60px);
+	height: 30px;
+	animation: sun 4s infinite;
+}
+
+.sun div {
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	border-radius: 100%;
+	background-color: yellow;
+}
+.sky div {
+	position: absolute;
+	background-color: cyan;
+	height: 100%;
+	width: 50%;
+	transform: rotate(45deg);
+	top: -30%;
+}
+
+.sky div:last-child {
+	position: absolute;
+	right: 0;
+	transform: rotate(-45deg);
+	top: -30%;
+}
+
+.pyramid {
+	background-color: #F4F4F4;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	animation: pyramid 4s infinite;
+}
+
+.pyramid div {
+	background-color: #DDDADA;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	transform: translateX(9px) rotate(-20deg);
+	animation: pyramid-shadow 4s infinite;
+	
+}
+.ground {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 40%;
+	background-color:#f0de75;
+}
+
+
+.ground div {
+	width: 100%;
+	height: 50%;
+	opacity: 0.3;
+	background-color: black;
+	animation: ground-shadow 4s infinite;
+}
+
+@keyframes center {
+	0% {
+		opacity: 0;
+	}
+	
+	20% {
+		opacity: 1;
+	}
+	70%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+@keyframes sun {
+		0% {
+		transform: rotate(0deg)
+	}
+	100%{
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes pyramid {
+	0% {
+		background-color: #DDDADA;
+		
+	}
+
+	
+	30%{
+		background-color: #DDDADA;
+		
+	}
+
+	100%{
+		background-color: #f4f4f4;
+		
+	}
+}
+
+@keyframes pyramid-shadow {
+	0% {
+		background-color: #f4f4f4;
+		
+	}
+
+	
+	50%{
+		background-color: #DDDADA;
+		
+	}
+
+	100%{
+		background-color: #DDDADA;
+		
+	}
+}
+
+@keyframes ground-shadow {
+	0% {
+		clip-path: polygon(100% 0, 20% 0, 80% 0);
+	}
+	10% {
+		clip-path: polygon(100% 0, 20% 0, 80% 0);
+	}
+
+	
+	30%{
+		clip-path: polygon(51% 100%, 20% 0, 80% 0);
+	}
+
+	80%{
+		clip-path: polygon(0 0, 20% 0, 80% 0);
+	}
+	
+	100%{
+		clip-path: polygon(0 0, 20% 0, 80% 0);
+	}
+}
