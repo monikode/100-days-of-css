@@ -1,12 +1,46 @@
+body {
+    background-color: #2C2D33;
+}
+
 #app {
     text-align: center;
 }
 
 .main-container {
   display: flex;
-  height: 400px;
+  min-height: 400px;
   justify-content: space-around;
 }
+
+#frame-container {
+    padding: 25px;
+    box-sizing:  content-box;
+    border: 1px solid white;
+    position: relative;
+}
+
+#frame-container .box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.3s;
+
+}
+
+#frame-container.slide-in .box{
+    animation: frame-in 1s;
+    animation-play-state: running;
+}
+
+#frame-container.slide-out .box{
+    animation: frame-out 1s;
+    animation-play-state: running;
+
+}
+
 #frame, .not-found{
   width: 400px;
   height: 400px;

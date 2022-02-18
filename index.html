@@ -12,12 +12,15 @@
     <div id="app">
       <a :href="'https://100dayscss.com/days/'+day" target="_blank">
         <h2>100 Days of CSS - Day {{day}}</h2>
-
       </a>
       <div class="main-container">
         <button @click="previousDay()" :disabled="day <= 1">Anterior</button>
-        <div id="frame" v-if="!isDayNull"></div>
-        <div v-else class="not-found">Coming soon 🥶</div>
+        <div id="frame-container">
+          <div id="frame" v-if="!isDayNull"></div>
+          <div v-else class="not-found">Coming soon 🥶</div>
+          <div class="box"></div>
+        </div>
+
         <button @click="nextDay()">Proximo</button>
       </div>
       {{day}}/100
