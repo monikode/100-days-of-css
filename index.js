@@ -6,7 +6,7 @@ const app = Vue.createApp({
       isDayNull: false,
       toInteract: false,
       contentLoaded: false,
-      daysList: new Array(100).fill(false)
+      daysList: new Array(100).fill(false),
     };
   },
 
@@ -114,10 +114,9 @@ const app = Vue.createApp({
     },
     async loadDaysList() {
       for (let i = 1; i <= 100; i++) {
-        var exists = this.fileExists(`day-${i}/style.css`);
-        this.daysList[i-1] = exists;
+        this.daysList[i - 1] = this.fileExists(`day-${i}/style.css`);
       }
-    }
+    },
   },
   watch: {
     day() {
@@ -135,8 +134,6 @@ const app = Vue.createApp({
     document.getElementById("app").classList.remove("unmounted");
 
     this.changeDay();
-    this.loadDaysList()
-
-    console.log(this.daysList);
+    this.loadDaysList();
   },
 });
