@@ -27,11 +27,10 @@ const app = Vue.createApp({
       // console.log(http)
       try {
         http.send();
-
-      }catch(e){
-        console.log("balala")
+      } catch (e) {
+        console.log("balala");
       }
-     
+
       return http.status != 404;
     },
     async findStyleSheet() {
@@ -52,7 +51,7 @@ const app = Vue.createApp({
         })
         .catch((err) => {
           document.head.getElementsByTagName("link")[0].href = ``;
-          this.toInteract =false;
+          this.toInteract = false;
           console.log("Failed to fetch page: ", err);
           this.isDayNull = true;
         });
@@ -98,20 +97,20 @@ const app = Vue.createApp({
       }, 300);
     },
     nextDay() {
-      document.getElementById("next-day").classList.add("active")
+      document.getElementById("next-day").classList.add("active");
       if (this.day < 100) this.day += 1;
-      setTimeout(()=>{
-        document.getElementById("next-day").classList.remove("active")
-      }, 1000)
+      setTimeout(() => {
+        document.getElementById("next-day").classList.remove("active");
+      }, 1000);
     },
     previousDay() {
-      document.getElementById("previous-day").classList.add("active")
+      document.getElementById("previous-day").classList.add("active");
       if (this.day > 1) {
         this.day -= 1;
       }
-      setTimeout(()=>{
-        document.getElementById("previous-day").classList.remove("active")
-      }, 1000)
+      setTimeout(() => {
+        document.getElementById("previous-day").classList.remove("active");
+      }, 1000);
     },
   },
   watch: {
@@ -127,14 +126,13 @@ const app = Vue.createApp({
     },
   },
   async mounted() {
+    document.getElementById("app").classList.remove("unmounted");
 
     this.changeDay();
     for (let i = 1; i <= 100; i++) {
-      var exists =  this.fileExists(`day-${i}/style.css`);
+      var exists = this.fileExists(`day-${i}/style.css`);
       this.daysList.push(exists);
     }
-
-    document.getElementById("app").classList.remove("unmounted")
 
     console.log(this.daysList);
   },
