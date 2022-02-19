@@ -84,3 +84,12 @@ body {
 .unmounted #main-container {
   display: none;
 }
+
+.interact {
+  position: absolute;
+  color: #fff;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
