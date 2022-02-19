@@ -198,6 +198,16 @@ body {
   transition-delay: 0.3s;
 }
 
+.summary button span {
+  transition: color 0.001s, font-weight 0.001s;
+  transition-delay: 0.4s;
+}
+
+.summary button.active span {
+  transition-delay: 0.3s;
+}
+
+
 .summary button.empty {
   box-shadow: inset 0 0 0px 0px #fff;
   opacity: 0.4;
@@ -217,14 +227,14 @@ body {
   z-index: -1;
 }
 
-.summary .active {
+.summary .active, .summary .active.empty {
   box-shadow: inset 0 0 0px 100px #fff;
-  color: #0c0c0c !important;
+  color: #0c0c0c;
   font-weight: bold;
   
 }
 
-.summary .active .day-active {
+.summary .active .day-active, .summary .active.empty .day-active {
   transform: translate(-50%, -50%);
 }
 
