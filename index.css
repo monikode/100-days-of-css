@@ -1,15 +1,29 @@
+html {
+  height: 100%;
+
+}
+
 body {
     background-color: #2C2D33;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  width: 100%;
 }
 
 #app {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.main-container {
+#main-container {
   display: flex;
   min-height: 400px;
   justify-content: center;
+  align-items: center;
+  flex: 1;
 }
 
 #frame-container {
@@ -17,6 +31,8 @@ body {
     box-sizing:  content-box;
     border: 1px solid white;
     position: relative;
+    height: 400px;
+    width: 400px;
 }
 
 #frame-container .box{
@@ -25,8 +41,11 @@ body {
     left: 0;
     width: 0;
     height: 100%;
+    max-height: 450px;
+
     background-color: #fff;
     transition: all 0.3s ease-in-out;
+
 
 }
 
@@ -41,7 +60,13 @@ body {
 
 }
 
+.info-column {
+  color: #fff;
+
+}
+
 #frame, .not-found{
+  position: absolute;
   width: 400px;
   height: 400px;
   display: flex;
@@ -54,4 +79,8 @@ body {
   margin: 0;
   left: 0;
   top: 0;
+}
+
+.unmounted #main-container {
+  display: none;
 }

@@ -119,11 +119,14 @@ const app = Vue.createApp({
     },
   },
   async mounted() {
+
     this.changeDay();
     for (let i = 1; i <= 100; i++) {
       var exists =  this.fileExists(`day-${i}/style.css`);
       this.daysList.push(exists);
     }
+
+    document.getElementById("app").classList.remove("unmounted")
 
     console.log(this.daysList);
   },

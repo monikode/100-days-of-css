@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="unmounted">
       <a :href="'https://100dayscss.com/days/'+day" target="_blank">
         <h2>100 Days of CSS - Day {{day}}</h2>
       </a>
-      <div class="main-container">
+      <div id="top">
+        
+      </div>
+      <div id="main-container">
         <div class="frame-column">
           <div id="frame-container">
             <div id="frame" v-if="!isDayNull"></div>
@@ -21,8 +24,8 @@
             <div class="box"></div>
           </div>
         </div>
-        <div class="info-column">
-          <div>
+        <div class="info-column" >
+          <div v-cloak>
             DAY {{day}}
             <button @click="previousDay()" :disabled="day <= 1">
               Anterior
@@ -30,12 +33,11 @@
 
             <button @click="nextDay()">Proximo</button>
           </div>
-          <button v-for="(d, index) in daysList" :key="index" @click="day = index+1" :disabled="!d">
+          <button v-for="(d, index) in daysList" :key="index" @click="day = index+1" :disabled="!d" v-cloak>
             {{index + 1}}
           </button>
         </div>
       </div>
-      {{day}}/100
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script
