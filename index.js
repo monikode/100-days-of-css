@@ -4,19 +4,51 @@ const app = Vue.createApp({
     return {
       day: 1,
       isDayNull: false,
+      toInteract: false,
+      contentLoaded: false,
+      daysList: [],
     };
   },
+
   methods: {
+    fileExists(url) {
+      // try {
+      //   var req = new XMLHttpRequest();
+      //   await req.open("GET", url, true);
+      //   req.send();
+      //   console.log(req);
+
+      //   return req.status !== 404;
+      // } catch (e) {
+      //   return false;
+      // }
+      var http = new XMLHttpRequest();
+      http.open("GET", url, false);
+      // console.log(http)
+      try {
+        http.send();
+
+      }catch(e){
+        console.log("balala")
+      }
+     
+      return http.status != 404;
+    },
     async findStyleSheet() {
+      document.head.getElementsByTagName("link")[0].href = ``;
+
       await fetch(`day-${this.day}/style.css`)
-        .then((response) => {
-          if (!response.ok) throw Error;
+        .then(async (response) => {
+          if (!response.ok) throw new Error("Stylesheet not found");
           else this.isDayNull = false;
 
           document.head.getElementsByTagName(
             "link"
           )[0].href = `day-${this.day}/style.css`;
-          this.findHTML();
+          return response.text();
+        })
+        .then((css) => {
+          this.toInteract = css.includes("pointer");
         })
         .catch((err) => {
           document.head.getElementsByTagName("link")[0].href = ``;
@@ -26,9 +58,10 @@ const app = Vue.createApp({
         });
     },
     async findHTML() {
+      document.getElementById("frame").innerHTML = "";
       await fetch(`day-${this.day}/index.html`)
         .then((response) => {
-          if (!response.ok) throw Error;
+          if (!response.ok) throw new Error("HTML not found");
           else this.isDayNull = false;
           return response.text();
         })
@@ -40,32 +73,28 @@ const app = Vue.createApp({
           this.isDayNull = true;
         });
     },
-    findScript() {
-      fetch(`day-${this.day}/index.js`)
-        .then((response) => {
-          if (!response.ok) throw Error;
-          if (document.getElementById("day-script"))
-            document.body.removeChild(document.getElementById("day-script"));
-          var newScript = document.createElement("script");
-          newScript.id = "day-script";
-          newScript.src = `day-${this.day}/index.js`;
-          document.body.appendChild(newScript);
-        })
-        .catch((err) => {
-          if (document.getElementById("day-script"))
-            document.body.removeChild(document.getElementById("day-script"));
-        });
+    async findScript() {
+      if (this.fileExists(`day-${this.day}/index.js`)) {
+        if (document.getElementById("day-script"))
+          document.body.removeChild(document.getElementById("day-script"));
+        var newScript = document.createElement("script");
+        newScript.id = "day-script";
+        newScript.src = `day-${this.day}/index.js`;
+        document.body.appendChild(newScript);
+      } else {
+        if (document.getElementById("day-script"))
+          document.body.removeChild(document.getElementById("day-script"));
+      }
     },
-    changeDay() {
+    async changeDay() {
       document.querySelector("#frame-container .box").style.width = "100%";
       document.querySelector("#frame-container .box").style.left = "0";
       document.querySelector("#frame-container .box").style.right = "auto";
-
+      this.contentLoaded = false;
       setTimeout(async () => {
         await this.findStyleSheet();
-        document.querySelector("#frame-container .box").style.width = "0%";
-        document.querySelector("#frame-container .box").style.right = "0";
-        document.querySelector("#frame-container .box").style.left = "auto";
+        this.contentLoaded = true;
+        this.findHTML();
       }, 300);
     },
     nextDay() {
@@ -81,8 +110,21 @@ const app = Vue.createApp({
     day() {
       this.changeDay();
     },
+    contentLoaded() {
+      if (this.contentLoaded) {
+        document.querySelector("#frame-container .box").style.width = "0%";
+        document.querySelector("#frame-container .box").style.right = "0";
+        document.querySelector("#frame-container .box").style.left = "auto";
+      }
+    },
   },
-  mounted() {
+  async mounted() {
     this.changeDay();
+    for (let i = 1; i <= 100; i++) {
+      var exists =  this.fileExists(`day-${i}/style.css`);
+      this.daysList.push(exists);
+    }
+
+    console.log(this.daysList);
   },
 });

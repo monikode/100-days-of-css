@@ -30,6 +30,9 @@
 
             <button @click="nextDay()">Proximo</button>
           </div>
+          <button v-for="(d, index) in daysList" :key="index" @click="day = index+1" :disabled="!d">
+            {{index + 1}}
+          </button>
         </div>
       </div>
       {{day}}/100
@@ -41,7 +44,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
-    <script id="day-script" src="day-1/index.js"></script>
+    <script id="day-script" ></script>
     <script>
       app.mount("#app");
     </script>
