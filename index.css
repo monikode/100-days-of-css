@@ -34,6 +34,8 @@ body {
   position: relative;
   height: 400px;
   width: 400px;
+  animation: frame 0.3s;
+  animation-fill-mode: forwards;
 }
 
 #frame-container .box {
@@ -78,10 +80,6 @@ body {
   top: 0;
 }
 
-.unmounted #main-container {
-  display: none;
-}
-
 #main-container > * {
   width: 50%;
 }
@@ -115,8 +113,11 @@ body {
   position: absolute;
   height: 2px;
   width: 60%;
+  transition: all 0.3s;
   top: 100%;
   background-color: #fff;
+  animation: head-line 0.3s;
+  animation-fill-mode: forwards;
 }
 .info-column .head button {
   background: none;
@@ -134,8 +135,11 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: all 0.5s ease-in-out;
+  transition: box-shadow 0.5s ease-in-out, color 0.5s ease-in-out;
   box-shadow: inset 0 0 0px 2px #fff;
+
+  animation: head-button 0.5s ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .info-column .head button:hover {
@@ -196,6 +200,8 @@ body {
   overflow: hidden;
   transition: box-shadow 0.3s, transform 0.3s;
   transition-delay: 0.3s;
+  animation: summary-button 0.3s;
+  animation-fill-mode: forwards;
 }
 
 .summary button span {
@@ -206,7 +212,6 @@ body {
 .summary button.active span {
   transition-delay: 0.2s;
 }
-
 
 .summary button.empty {
   box-shadow: inset 0 0 0px 0px #fff;
@@ -227,14 +232,15 @@ body {
   z-index: -1;
 }
 
-.summary .active, .summary .active.empty {
+.summary .active,
+.summary .active.empty {
   box-shadow: inset 0 0 0px 100px #fff;
   color: #0c0c0c;
   font-weight: bold;
-  
 }
 
-.summary .active .day-active, .summary .active.empty .day-active {
+.summary .active .day-active,
+.summary .active.empty .day-active {
   transform: translate(-50%, -50%);
 }
 
@@ -266,5 +272,50 @@ body {
 
   .summary {
     grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* *************** UNMOUNTED **************** */
+
+.unmounted #main-container {
+  display: none;
+}
+
+@keyframes frame {
+  from {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes head-line {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+@keyframes head-button {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 20px;
+  }
+}
+
+@keyframes summary-button {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
   }
 }
