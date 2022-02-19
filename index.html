@@ -33,7 +33,7 @@
               <span class="iconify" data-icon="bi:arrow-left"></span>
             </button>
 
-            <button id="next-day"  @click="nextDay()">
+            <button id="next-day"  @click="nextDay()" :disabled="day >= 100">
               <div class="circle"></div>
               <span class="iconify" data-icon="bi:arrow-right"></span>
             </button>
