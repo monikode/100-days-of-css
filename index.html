@@ -40,15 +40,20 @@
               <span class="iconify" data-icon="bi:arrow-right"></span>
             </button>
           </div>
-          <button
-            v-for="(d, index) in daysList"
-            :key="index"
-            @click="day = index+1"
-            :disabled="!d"
-            v-cloak
-          >
-            {{index + 1}}
-          </button>
+          <div class="summary">
+            <button
+              v-for="(d, index) in daysList"
+              :key="index"
+              @click="day = index+1"
+              :disabled="!d"
+              v-cloak
+              :class="{empty: !d}"
+            >
+              <div class="day-active"></div>
+
+              {{index + 1}}
+            </button>
+          </div>
         </div>
       </div>
     </div>

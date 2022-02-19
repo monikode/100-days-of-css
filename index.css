@@ -24,6 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   flex: 1;
+  gap: 2vw;
 }
 
 #frame-container {
@@ -81,7 +82,7 @@ body {
   display: none;
 }
 
-#main-container > *{
+#main-container > * {
   width: 50%;
 }
 
@@ -105,11 +106,9 @@ body {
   margin-bottom: 30px;
 }
 
-
 .head .title {
   min-width: 200px;
 }
-
 
 .info-column .head:after {
   content: "";
@@ -145,9 +144,8 @@ body {
 
 .info-column .head button:disabled {
   box-shadow: inset 0 0 0px 0px #fff;
-  color: rgba(255, 255, 255, .4);
+  color: rgba(255, 255, 255, 0.4);
 }
-
 
 .info-column .head button .circle {
   position: absolute;
@@ -157,14 +155,13 @@ body {
   height: 100%;
   background-color: #fff;
   border-radius: 100%;
-  transition: all 0.5s  ease-in-out;
+  transition: all 0.5s ease-in-out;
   z-index: -1;
 }
 
 .info-column .head button:last-child .circle {
   left: -100%;
 }
-
 
 .info-column .head .active {
   color: #0c0c0c;
@@ -174,28 +171,80 @@ body {
   left: 0 !important;
 }
 
-
 .frame-column {
   display: flex;
   justify-content: center;
 }
 
+.summary {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+}
+.summary button {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background: none;
+  color: #fff;
+  font-family: serif;
+  border: none;
+  box-shadow: inset 0 0 0px 1px #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+  transition-delay: 0.3s;
+}
+
+.summary button.empty {
+  box-shadow: inset 0 0 0px 0px #fff;
+  opacity: 0.4;
+}
+
+.summary button .day-active {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  transform: translate(-50%, -50%) scale(0);
+
+  background-color: #fff;
+  border-radius: 100%;
+  transition: transform 0.3s;
+  z-index: -1;
+}
+
+.summary .active {
+  box-shadow: inset 0 0 0px 100px #fff;
+  color: #0c0c0c !important;
+  font-weight: bold;
+  
+}
+
+.summary .active .day-active {
+  transform: translate(-50%, -50%);
+}
+
 @media screen and (max-width: 990px) {
-  #main-container{
+  #main-container {
     flex-direction: column;
   }
 
-  #main-container > *{
+  #main-container > * {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 500px) {
-  #frame{
-    transform: scale(0.5) translate(-50%, -50%) ;
+  #frame {
+    transform: scale(0.5) translate(-50%, -50%);
   }
 
-  #frame-container, #frame-container .not-found{
+  #frame-container,
+  #frame-container .not-found {
     height: 200px;
     width: 200px;
   }
@@ -204,6 +253,8 @@ body {
     min-width: auto;
     font-size: 40px;
   }
-  
-}
 
+  .summary {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

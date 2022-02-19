@@ -11,28 +11,6 @@ const app = Vue.createApp({
   },
 
   methods: {
-    fileExists(url) {
-      // try {
-      //   var req = new XMLHttpRequest();
-      //   await req.open("GET", url, true);
-      //   req.send();
-      //   console.log(req);
-
-      //   return req.status !== 404;
-      // } catch (e) {
-      //   return false;
-      // }
-      var http = new XMLHttpRequest();
-      http.open("GET", url, false);
-      // console.log(http)
-      try {
-        http.send();
-      } catch (e) {
-        console.log("balala");
-      }
-
-      return http.status != 404;
-    },
     async findStyleSheet() {
       document.head.getElementsByTagName("link")[0].href = ``;
 
@@ -92,8 +70,18 @@ const app = Vue.createApp({
       document.querySelector("#frame-container .box").style.width = "100%";
       document.querySelector("#frame-container .box").style.left = "0";
       document.querySelector("#frame-container .box").style.right = "auto";
+
+      [...document.querySelectorAll(".summary button")].forEach((el) => {
+        el.classList.remove("active");
+        el.querySelector(".day-active").style.display = "none";
+      });
+      document.querySelector(`.summary button:nth-child(${this.day}) .day-active`).style.display = "";
+
       this.contentLoaded = false;
       setTimeout(async () => {
+        
+        document.querySelector(`.summary button:nth-child(${this.day})`).classList.add("active")
+
         await this.findStyleSheet();
         this.contentLoaded = true;
         this.findHTML();
