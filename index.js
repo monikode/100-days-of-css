@@ -98,12 +98,20 @@ const app = Vue.createApp({
       }, 300);
     },
     nextDay() {
+      document.getElementById("next-day").classList.add("active")
       if (this.day < 100) this.day += 1;
+      setTimeout(()=>{
+        document.getElementById("next-day").classList.remove("active")
+      }, 1000)
     },
     previousDay() {
+      document.getElementById("previous-day").classList.add("active")
       if (this.day > 1) {
         this.day -= 1;
       }
+      setTimeout(()=>{
+        document.getElementById("previous-day").classList.remove("active")
+      }, 1000)
     },
   },
   watch: {

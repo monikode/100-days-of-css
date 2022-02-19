@@ -26,13 +26,17 @@
           </div>
         </div>
         <div class="info-column" >
-          <div v-cloak>
+          <div class="head">
             DAY {{day}}
-            <button @click="previousDay()" :disabled="day <= 1">
-              Anterior
+            <button id="previous-day" @click="previousDay()" :disabled="day <= 1">
+              <div class="circle"></div>
+              <span class="iconify" data-icon="bi:arrow-left"></span>
             </button>
 
-            <button @click="nextDay()">Proximo</button>
+            <button id="next-day"  @click="nextDay()">
+              <div class="circle"></div>
+              <span class="iconify" data-icon="bi:arrow-right"></span>
+            </button>
           </div>
           <button v-for="(d, index) in daysList" :key="index" @click="day = index+1" :disabled="!d" v-cloak>
             {{index + 1}}
@@ -40,6 +44,8 @@
         </div>
       </div>
     </div>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@iconify/iconify@2.1.2/dist/iconify.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
