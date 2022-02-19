@@ -13,9 +13,7 @@
       <a :href="'https://100dayscss.com/days/'+day" target="_blank">
         <h2>100 Days of CSS - Day {{day}}</h2>
       </a>
-      <div id="top">
-        
-      </div>
+      <div id="top"></div>
       <div id="main-container">
         <div class="frame-column">
           <div id="frame-container">
@@ -25,20 +23,30 @@
             <div class="interact" v-show="toInteract">Interactive!</div>
           </div>
         </div>
-        <div class="info-column" >
+        <div class="info-column">
           <div class="head">
-            DAY {{day}}
-            <button id="previous-day" @click="previousDay()" :disabled="day <= 1">
+            <div class="title">DAY {{day}}</div>
+            <button
+              id="previous-day"
+              @click="previousDay()"
+              :disabled="day <= 1"
+            >
               <div class="circle"></div>
               <span class="iconify" data-icon="bi:arrow-left"></span>
             </button>
 
-            <button id="next-day"  @click="nextDay()" :disabled="day >= 100">
+            <button id="next-day" @click="nextDay()" :disabled="day >= 100">
               <div class="circle"></div>
               <span class="iconify" data-icon="bi:arrow-right"></span>
             </button>
           </div>
-          <button v-for="(d, index) in daysList" :key="index" @click="day = index+1" :disabled="!d" v-cloak>
+          <button
+            v-for="(d, index) in daysList"
+            :key="index"
+            @click="day = index+1"
+            :disabled="!d"
+            v-cloak
+          >
             {{index + 1}}
           </button>
         </div>
@@ -53,7 +61,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
-    <script id="day-script" ></script>
+    <script id="day-script"></script>
     <script>
       app.mount("#app");
     </script>
