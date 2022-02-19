@@ -73,17 +73,20 @@ const app = Vue.createApp({
         });
     },
     async findScript() {
-      if (this.fileExists(`day-${this.day}/index.js`)) {
-        if (document.getElementById("day-script"))
-          document.body.removeChild(document.getElementById("day-script"));
-        var newScript = document.createElement("script");
-        newScript.id = "day-script";
-        newScript.src = `day-${this.day}/index.js`;
-        document.body.appendChild(newScript);
-      } else {
-        if (document.getElementById("day-script"))
-          document.body.removeChild(document.getElementById("day-script"));
-      }
+      fetch(`day-${this.day}/index.js`)
+        .then((response) => {
+          if (!response.ok) throw Error;
+          if (document.getElementById("day-script"))
+            document.body.removeChild(document.getElementById("day-script"));
+          var newScript = document.createElement("script");
+          newScript.id = "day-script";
+          newScript.src = `day-${this.day}/index.js`;
+          document.body.appendChild(newScript);
+        })
+        .catch((err) => {
+          if (document.getElementById("day-script"))
+            document.body.removeChild(document.getElementById("day-script"));
+        });
     },
     async changeDay() {
       document.querySelector("#frame-container .box").style.width = "100%";
@@ -112,9 +115,16 @@ const app = Vue.createApp({
         document.getElementById("previous-day").classList.remove("active");
       }, 1000);
     },
-    async loadDaysList() {
+    loadDaysList() {
       for (let i = 1; i <= 100; i++) {
-        this.daysList[i - 1] = this.fileExists(`day-${i}/style.css`);
+        fetch(`day-${i}/style.css`)
+          .then((res) => {
+            if (!res.ok) throw Error;
+            this.daysList[i - 1] = true;
+          })
+          .catch((e) => {
+            this.daysList[i - 1] = false;
+          });
       }
     },
   },
@@ -134,6 +144,7 @@ const app = Vue.createApp({
     document.getElementById("app").classList.remove("unmounted");
 
     this.changeDay();
+    console.log(this.$g);
     this.loadDaysList();
   },
 });

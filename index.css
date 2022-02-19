@@ -107,7 +107,7 @@ body {
 
 
 .head .title {
-  width: 200px;
+  min-width: 200px;
 }
 
 
@@ -199,5 +199,11 @@ body {
     height: 200px;
     width: 200px;
   }
+
+  .head .title {
+    min-width: auto;
+    font-size: 40px;
+  }
+  
 }
 
