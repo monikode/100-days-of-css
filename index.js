@@ -125,7 +125,7 @@ const app = Vue.createApp({
       }
     },
   },
-  async mounted() {
+  mounted() {
     document.getElementById("app").classList.remove("unmounted");
 
     this.changeDay();
