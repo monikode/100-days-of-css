@@ -14,14 +14,23 @@
         <h2>100 Days of CSS - Day {{day}}</h2>
       </a>
       <div class="main-container">
-        <button @click="previousDay()" :disabled="day <= 1">Anterior</button>
-        <div id="frame-container">
-          <div id="frame" v-if="!isDayNull"></div>
-          <div v-else class="not-found">Coming soon 🥶</div>
-          <div class="box"></div>
+        <div class="frame-column">
+          <div id="frame-container">
+            <div id="frame" v-if="!isDayNull"></div>
+            <div v-else class="not-found">Coming soon 🥶</div>
+            <div class="box"></div>
+          </div>
         </div>
+        <div class="info-column">
+          <div>
+            DAY {{day}}
+            <button @click="previousDay()" :disabled="day <= 1">
+              Anterior
+            </button>
 
-        <button @click="nextDay()">Proximo</button>
+            <button @click="nextDay()">Proximo</button>
+          </div>
+        </div>
       </div>
       {{day}}/100
     </div>
