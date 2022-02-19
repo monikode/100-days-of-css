@@ -52,7 +52,7 @@ const app = Vue.createApp({
         })
         .catch((err) => {
           document.head.getElementsByTagName("link")[0].href = ``;
-
+          this.toInteract =false;
           console.log("Failed to fetch page: ", err);
           this.isDayNull = true;
         });
