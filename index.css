@@ -7,16 +7,15 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  width: 100%;
 }
 
 #app {
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px 5vw;
+  padding: 5vh 5vw 5vh 5vw;
   box-sizing: border-box;
-
+min-height: 100%;
   min-width: 300px;
 }
 
@@ -255,6 +254,10 @@ body {
 
   #main-container > * {
     width: 100%;
+  }
+
+  #app {
+    padding-bottom: 10vw;
   }
 }
 

@@ -1,0 +1,30 @@
+.frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+    border-radius: 2px;
+      box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+      overflow: hidden;
+    background: #581b87;
+    color: #333;
+      font-family: 'Open Sans', Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      
+      display: grid;
+      grid-template-columns: repeat(20, 1fr);
+  }
+  
+  .frame div {
+      background-color: #581b87;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-sizing: border-box;
+  }
+  
+  .frame .active {
+      background-color: white;
+  }
